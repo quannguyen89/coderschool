@@ -25,8 +25,18 @@ class InterviewPrepwork
     arr
   end
 
-  def self.checkpoint3_prob2
-    
+  def self.checkpoint3_prob2(arr, from, to)
+    for i in (1...arr.length) do
+      arr[i] += arr[i-1]
+    end
+    count = 0
+    for i in (0...arr.length) do
+      for j in (0..i) do
+        range_sum = j > 0 ? arr[i] - arr[j-1] : arr[i]
+        count = count + 1 if range_sum >= from && range_sum <= to
+      end
+    end
+    count
   end
 
   def self.checkpoint5_prob2(arr)
